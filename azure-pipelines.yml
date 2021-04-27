@@ -4,7 +4,8 @@ trigger:
 pool:
   vmImage: 'ubuntu-18.04'
   demands:
-  - npm
+    - npm
+
 
 variables:
   buildConfiguration: 'Release'
@@ -53,6 +54,7 @@ steps:
     publishTestResults: true
     projects: '**/*.Tests.csproj'
 
+
 - task: DotNetCoreCLI@2
   displayName: 'Publish the project - $(buildConfiguration)'
   inputs:
@@ -65,3 +67,4 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   condition: succeeded()
+
